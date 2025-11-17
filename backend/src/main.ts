@@ -6,7 +6,14 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, { cors: true });
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
-  await app.listen(process.env.PORT);
+  app.enableCors({
+    origin: [
+      'http://localhost:4000',
+      'https://kupi-frontend.nomorepartiessbs.ru/',
+    ],
+    credentials: true,
+  });
+  await app.listen(process.env.PORT ?? 5000);
 }
 
 bootstrap();

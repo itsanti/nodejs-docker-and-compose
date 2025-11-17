@@ -1,0 +1,15 @@
+
+services:
+  nest-db:
+    image: postgres:15.6
+    volumes:
+      - nest-db_data:/var/lib/postgresql/pgdata
+    environment:
+      - "POSTGRES_DB=kupipodariday"
+      - "POSTGRES_USER=postgres"
+      - PGDATA=/var/lib/postgresql/pgdata
+      - "POSTGRES_PASSWORD=postgres"
+    ports:
+      - 5432:5432
+volumes:
+  nest-db_data:
