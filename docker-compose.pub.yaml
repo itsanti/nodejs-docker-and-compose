@@ -3,17 +3,17 @@ services:
   frontend:
     build:
       context: frontend
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.prod
     image: pr-f
     networks:
       - http-network
     ports:
-      - "8081:3000"
+      - "8081:80"
     restart: on-failure
   backend:
     build:
       context: backend
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.prod
     image: pr-b
     env_file: .env
     networks:
