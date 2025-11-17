@@ -16,6 +16,10 @@ docker run --rm -p 3000:3000 pr-f
 ## Деплой
 
 ```bash
-# склонировать репозиторий и выполнить
+# склонировать репозиторий
+git clone https://github.com/itsanti/nodejs-docker-and-compose.git
+# создать файл настроек .env
+cp .env.example .env
+# выполнить для запуска приложения
 docker compose -f .\docker-compose.pub.yaml up -d --build
 ```
