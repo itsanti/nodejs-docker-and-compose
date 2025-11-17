@@ -9,4 +9,6 @@
 ```bash
 # запуск контейнера с backend (есть зависимость от БД)
 docker run --rm -p 4000:5000 --env-file ../.env pr-b
+# запуск контейнера с frontend
+docker run --rm -p 3000:3000 pr-f
 ```
