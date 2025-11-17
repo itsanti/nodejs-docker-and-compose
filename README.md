@@ -12,3 +12,10 @@ docker run --rm -p 4000:5000 --env-file ../.env pr-b
 # запуск контейнера с frontend
 docker run --rm -p 3000:3000 pr-f
 ```
+
+## Деплой
+
+```bash
+# склонировать репозиторий и выполнить
+docker compose -f .\docker-compose.pub.yaml up -d --build
+```

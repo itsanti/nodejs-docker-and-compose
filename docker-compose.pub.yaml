@@ -1,0 +1,46 @@
+version: "3.9"
+services:
+  frontend:
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    image: pr-f
+    networks:
+      - http-network
+    ports:
+      - "8081:3000"
+    restart: on-failure
+  backend:
+    build:
+      context: backend
+      dockerfile: Dockerfile
+    image: pr-b
+    env_file: .env
+    networks:
+      - http-network
+      - db-network
+    ports:
+      - "4000:5000"
+    depends_on:
+      - db
+    restart: on-failure
+  db:
+    image: postgres:15.6
+    environment:
+      - PGDATA=/var/lib/postgresql/pgdata
+    env_file: .env
+    networks:
+      - db-network
+    volumes:
+      - "${POSTGRES_PGDATA}:/var/lib/postgresql/pgdata"
+    restart: on-failure
+
+networks:
+  db-network:
+    driver: bridge
+    internal: true
+  http-network:
+    driver: bridge 
+
+volumes:
+  nest-db_data: {}

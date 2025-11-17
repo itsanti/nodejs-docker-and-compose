@@ -8,7 +8,7 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
   app.enableCors({
     origin: [
-      'http://localhost:4000',
+      'http://localhost:8081',
       'https://kupi-frontend.nomorepartiessbs.ru/',
     ],
     credentials: true,
